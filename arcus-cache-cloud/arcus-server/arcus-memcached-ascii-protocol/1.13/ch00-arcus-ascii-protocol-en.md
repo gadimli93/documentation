@@ -28,7 +28,7 @@ ARCUS Cache Server are introduced in [Collection Basic Concept](ch02-collection-
 Item attributes have been expanded by providing collection features, which are covered in detail in 
 [Item Attribute Description](ch03-item-attributes-en.md)
 
-## Simple Key-Value Feature
+## Simple Key Value Features
 
 The ARCUS Cache Server provides key-value commands based on memcached `1.4`, and for some of them provides extended commands.
 Therefore, commands that are used in the existing memcached `1.4` can also be used in the ARCUS Cache Server.
