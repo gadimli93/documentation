@@ -93,7 +93,9 @@ public class Main {
 
 - if we try to store vallue more that a data type can store, **overflow** will occur. reverse also true that called _underflow_.
 
-```java   public static void main(String[] args) {
+```java   
+
+  public static void main(String[] args) {
 
         int myValue = 10_000;
 
@@ -109,7 +111,7 @@ public class Main {
 ```
 
 -output:
-```
+```java
 Integer Minimum value = -2147483648
 Integer Maximum value = 2147483647
 Busted MAX value = -2147483648
@@ -119,7 +121,7 @@ Busted MIN value = 2147483647
 ## casting
 
 - **casting** - is treat or convert a number from one type to another. put a type in front of number in paranthesis;
-```
+```java
 (byte)(myMinByteValue / 2)
 ```
 - you don't always need to cast the value with integer type of values (such as long and double) but you'll need with/from other.
@@ -131,7 +133,50 @@ Busted MIN value = 2147483647
 - _single precision_ - occupies 32 bits
 - _double precision_ - occupies 64 bits
 
- 
+- float not much to refered/ recommended to use;
+- double is much used for floating numbers;
+- integer does not handle fraction of the number;
+
+ ```java
+ package nmg.javamastering;
+
+public class DoubleFloat {
+    public static void main (String[] args) {
+
+        float myMinFloatValue = Float.MIN_VALUE;
+        float myMaxFloatValue = Float.MAX_VALUE;
+        System.out.println("Float min value: " + myMinFloatValue);
+        System.out.println("Float max value: " + myMaxFloatValue);
+
+        double myMinDoubleValue = Double.MIN_VALUE;
+        double myMaxDoubleValue = Double.MAX_VALUE;
+        System.out.println("Double min value: " + myMinDoubleValue);
+        System.out.println("Double max value: " + myMaxDoubleValue);
+
+        int myIntValue = 5 / 2 ;
+        float myFloatValue = 5f / 2f;
+        double myDoubleValue = 5d / 2d;
+
+        System.out.println("my int value = " + myIntValue);
+        System.out.println("my float value = " + myFloatValue);
+        System.out.println("my double value = " + myDoubleValue);
+
+
+    }
+
+}
+
+// output
+
+my int value = 2
+my float value = 2.5
+my douvle value = 2.5
+
+ ```
+ - you don't need to use of 'd' when you use literal number with fraction '.00'
+ - e.g 5d = 5.00
+ - both _float_ and _double_ are good for general floating opertions, but for precise calculation jave has a _BigDecimal_ class that overcome the limitation of float and double.
+
 
 
 
