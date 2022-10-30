@@ -145,21 +145,152 @@ const myDetails = `I'm ${firstName}, a ${2022-birthYear} years old.`;
 
 - Type conversion : when manually converted from to another type (explisit)
 - Type coercion : when JS automatically convert type to another (implisit)
+- not every dat type can be converted to another
+- type coersion can be open gate for bugs if not be careful
+
 
 ```js
+// type conversion
 const inputYear = '1991';
     console.log(Number(inputYear), inputYear);
     console.log(Number(inputYear) + 18);   
-```
-- not every dat type can be converted to another
 
-```js
 // NaN - not a Number, which has Number data type and which is invalid
 console.log(Number('john'));
    console.log(typeof NaN);
+   
+// type coersion
+    // template literal also change all value and turns them in String
+    console.log('I.m ' + 23 + ' years old')
+    console.log('I.m ' + '23' + ' years old')
+    
+// type coersion
+    // template literal also change all value and turns them in String
+    console.log('I.m ' + 23 + ' years old')
+    console.log('I.m ' + '23' + ' years old')
+
+// here JS automatically read them as Number
+console.log('23' - '10' - 3);
+// -> output: 10
+ // Not everything can be turned to String
+ console.log('23' + '10' + 3);
+ // -> output : 23103
+   
 ```
+ ### Boolean coersion/convertion
+ 
+ - in JS there is 5 falsy values, which will be the output when we will try to convert to boolean
+  - 0
+  - '' (empty string)
+  - undefined
+  - null
+  - NaN
+- any string that is not a empty string has a true value
+- same apply to empty object `{}`
+
+```js
+console.log(Boolean(0));
+    console.log(Boolean(undefined));
+    console.log(Boolean('john'));
+    console.log(Boolean({}));
+    console.log(Boolean(''));
+// output : 
+false
+false
+true
+true
+false
 
 
+const money = 0;
+    if (money) {
+        console.log("dont spend it all")
+    } else {
+        console.log("need a job")
+    }
+// output : false
+    
+
+```
+- If- Else condition operator, no matter what we put in paranthesis, JS will always consider it as boolean, and 1st condition as true;
+
+```js
+let height;
+    if (height) {
+        console.log("defined")
+    } else {
+        console.log("undefined")
+    }
+```
+### Equality operator
+- == assign
+- == (loose) equal  -> perorms coercion
+- === (strict) equal -> does not perform coercion
+  - try to avoid loose equal operator
+
+```js
+const age = 18;
+if (age === 18) console.log('you are adult');
+
+if(age == 18) console.log('you're adult');
+
+const favourite = prompt('whats your favorite number ?');
+console.log(favourite);
+console.log(typeof favourite);
+
+// -> output: string
+
+if (favourite == 73) { // loose 
+    console.log('great number!')
+}
+// -> output :  great number
+
+if (favourite === 73) {
+    console.log('great number!')
+}
+
+// -> output: ''
+
+
+if (favourite === 73) {
+    console.log('a superb number')
+} else if (favourite === 37) {
+    console.log('37 also a great number')
+} 
+else if (favourite === 7) {
+   console.log('7 is a amazing all time great')  
+} else {
+    console.log('number 3 is a good number')
+};
+    
+// !== => not equal operator
+
+```
+ ### Basic Boolean logic: AND, OR, NOT Operators
+ 
+ - A(horizontal) AND B(vertical) => true when both are true
+ 
+|-----|-------| -----|
+AND   | TRUE  | FALSE 
+|-----| ------| ----- 
+TRUE  | TRUE  | FALSE |
+FALSE | FALSE | FALSE |
+
+- A(horizontal) OR B(vertical) => true when one is true
+ 
+|-----|-------| -----|
+OR    | TRUE  | FALSE
+|-----| ------| ------
+TRUE  | TRUE | TRUE  |
+FALSE | TRUE | FALSE |
+
+- A(horizontal) NOT (!) B(vertical) => can be either true/false
+  - Not operator has a precedence over AND and OR
+ 
+|-----|-------|
+|TRUE | FALSE
+|-----| -----|
+FALSE | TRUE |
 
 
 
