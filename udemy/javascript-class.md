@@ -293,7 +293,43 @@ FALSE | TRUE | FALSE |
 FALSE | TRUE |
 
 
+### Switch statement
 
+```js
+
+const day = 'sunday';
+
+switch(day) {
+    case 'monday' :
+        console.log("plan the week");
+        console.log("go to meeting");
+        break;
+    case 'tuesday' :
+        console.log("prepare theory");
+        break;
+    case 'wednesday' :
+        console.log("lunch with friend");
+        break;
+    default :
+        console.log("not a working day but do self study")
+}
+
+```
+
+### Statement and expression
+
+- expression : produce a value in JS
+  - e.g: 3+4, 1991, true && false %% !false
+- statement : sequence of actions, doens't produce a value
+  - e.g: if/else statement
+  - string inside the if/else statement that written on String itself is an expression
+- JS 
+  
+  
+  
+  
+  
+  
 
 
 
