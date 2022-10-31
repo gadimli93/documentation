@@ -325,7 +325,20 @@ switch(day) {
   - string inside the if/else statement that written on String itself is an expression
 - JS 
   
-  
+### Condition (ternary) operator
+
+```js
+const age = 23;
+
+age >= 18 ? console.log('allowed to drink') : console.log('only water');
+
+const drink =  age >= 18 ? 'wine' : 'water' ;
+console.log(drink);
+
+
+console.log(`i dont like to drink ${age >= 18 ? 'wine' : 'water' }`);
+
+```
   
   
   
