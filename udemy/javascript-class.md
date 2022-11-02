@@ -48,7 +48,7 @@ alert(hello wordl)
   - new updates every upcoming year
     - Modern JS: 2015 - 2020 
 
-## Values and Variables
+### Values and Variables
  - value : smalles unit of information or data
  - every value : either OBJECT or PRIMITIVE (not object)
  
@@ -141,7 +141,7 @@ const myDetails = `I'm ${firstName}, a ${2022-birthYear} years old.`;
 
 }
 ```
-## Type Conversion and Coercion
+### Type Conversion and Coercion
 
 - Type conversion : when manually converted from to another type (explisit)
 - Type coercion : when JS automatically convert type to another (implisit)
@@ -351,7 +351,56 @@ let final_value = bill_value + tip;
 console.log(`The bill value was ${bill_value}, tip was ${tip}, and the total value ${final_value}`)
 ```
 
+## Chapter - 2
+
+### Strict mode
+- activate the scrict mode for whole file
+- helps to avoid certain bugs
+- makes visiable errors, which otherwise JS would silently fail
+
+```js
+// at the top of the file, the very 1st line
+
+'use strict';
+
+let hasDriversLicense = false;
+let passTest = true;
+
+if(passTest) hasDriverLicense = true;
+if(hasDriversLicense) console.log('allowed');
+
+// output wont be printed since strict mode catched the error
+script.js:6 Uncaught ReferenceError: hasDriverLicense is not defined
+
+const interface = 'audio';
+
+
+//outputs
+Uncaught SyntaxError: Unexpected strict mode reserved word (at script.js:10:7)
+
+```
   
+### Functions
+- Function : a piece of code that can be used multiple times
+  - functions also receive and return the data
+
+```js
+// function body
+function logger() {
+    
+}
+// sample
+function logger() {
+    console.log('nmg');
+}
+// calling, running or invoking the function
+logger();
+logger();
+
+//output
+nmg
+nmg
+```
   
   
   
