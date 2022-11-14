@@ -383,6 +383,8 @@ Uncaught SyntaxError: Unexpected strict mode reserved word (at script.js:10:7)
 ### Functions
 - Function : a piece of code that can be used multiple times
   - functions also receive and return the data
+- function are perfect for dry code(non-repeatable code)
+- console.log(): also a function, but built-in
 
 ```js
 // function body
@@ -400,6 +402,177 @@ logger();
 //output
 nmg
 nmg
+
+function fruitProcessor(apples, oranges) {
+//  console.log(apples, oranges);
+    const juice = `Juice with ${apples} apples and ${oranges} oranges.`;
+    return juice;
+}
+
+// the results of the fruitProcessor function value will be the
+// the juice value 
+const appleJuice = fruitProcessor(5, 0);
+console.log(appleJuice);
+
+
+const appleOrangesJuice = fruitProcessor(2, 4);
+console.log(appleOrangesJuice) 
+
+const testJuice = fruitProcessor(1.1);
+console.log(testJuice);
+```
+
+### function declaration vs expressions
+- expressions produces the _value_
+- functios are just value and will be stored in variables
+- hoisting :
+  - in function declaration the it is still can be access even it is declared after the function is defined later.
+  - in function expression, function can not be access before ts initialization.
+
+```js
+// declaration
+function caclAge1(birthYear) {
+    return 2037 - birthYear;
+}
+
+const age1 = caclAge1(1991);
+console.log(age1)
+
+// expression
+
+const caclAge2 =  function(birthYear) {
+    return 2037 - birthYear;
+}
+// function(birthYear) { return 2037 - birthYear; => is an expression
+// and it producess the value
+// and we assigned its value to calAge2 variable
+
+const age2 = caclAge2(1991);
+console.log(age1, age2)
+
+```
+
+### Arrow Function
+- a special form of function expression, but it is a lot simplier on structure
+- arrow function does not require a {} braces and it returns the value implicitly( without explicitly declaring the return value)
+
+```js
+// special form of expression
+const caclAge2 =  function(birthYear) {
+    return 2037 - birthYear;
+}
+
+// arrow function =>
+const calcAge3 = birthYear => 2037 - birthYear;
+const age3 = calcAge3(1991);
+console.log(age3);
+```
+- in some complicated expressions, when we have multiple parameters both arrow (=>) and curly braces {} will be used, to wrap up the variables
+
+```js
+const caclAge2 =  function(birthYear) {
+    return 2037 - birthYear;
+}
+
+// arrow function =>
+const calcAge3 = birthYear => 2037 - birthYear;
+const age3 = calcAge3(1991);
+console.log(age3);
+
+// usage of both => and {} together
+const yearUntilRetirement = birthYear => {
+    const age = 2037 - birthYear;
+    const retirement = 65 - age;
+    return retirement;
+```
+```js
+const caclAge2 =  function(birthYear) {
+    return 2037 - birthYear;
+}
+
+// arrow function =>
+const calcAge3 = birthYear => 2037 - birthYear;
+const age3 = calcAge3(1991);
+console.log(age3);
+
+const yearsUntilRetirement = (birthYear, firstName) => {
+    const age = 2037 - birthYear;
+    const retirement = 65 - age;
+    // return retirement;
+    return `${firstName} retires in ${retirement} years`;
+}
+
+console.log(yearsUntilRetirement(1991, 'Mike'));
+console.log(yearsUntilRetirement(1993, 'Mikey'));
+```
+- arrow function is good, but not convenient for big scale projects, for one simple reason, bcuz they don't use 'this' keyword.
+
+### Function calling other functions
+
+```js
+// function calling other function
+
+function cutFruitPiecec(fruit) {
+    return fruit * 4;
+}
+
+function fruitProcessor(apples, oranges) {
+    const applesPieces = cutFruitPiecec(apples);
+    const orangesPieces = cutFruitPiecec(oranges);
+     
+    const juice = `Juice with ${applesPieces} pieces out of ${apples} apples and ${orangesPieces} pieces out of ${oranges} oranges.`;
+    return juice;
+    }
+
+    console.log(fruitProcessor(2, 3));
+```
+- REVIEW 
+  - work flow :
+    - **receive** input data, **transform** data, **output** data
+    
+  - struncture :
+    - after _function_ keyword comes _function name_
+    - inside the parenthesis comes _parameters_, a placeholder to receive _input_ value(like local variables of a function)
+    - after parenthesis of parameters inside the curly braces{} comes _function body_, a block of code that we want to reuse. _Processes_ the function's input data
+    - function body concludes with _return_ statement, that _outputs_ a value from the function and terminate execution.
+    - at the outside of the function we _invoke_ the function by storing it in the variable and calling the function using parenthesis();
+    - in case of function holds parameters we, call the function with _arguments_, which are the actual values of function parameters, to input data
+    - once the all expression is done, basically it will be replace with the return value that we will save in the variable to output it from the function.
+  
+  -  three different way to write functions :
+    - function declaration : function that can be used before it's declared
+    - function expressions : essentially a function value stored in a variable
+    - arrow function : great quick one-line function without using return. has no 'this' keyword
+  
+```js
+// REVIEW of FUNCTIONS
+
+const caclAge = function (birthYear) {
+    return 2037 - birthYear;
+}
+
+const yearsUntilRetirement = function ( birthYear, firstName) {
+    const age = caclAge(birthYear);
+    const retirement = 65 - age;
+
+    // return statement executed immediately therefore console.log that comes right after is ignored 
+    // one solution to this is to lineup the console.log, to put it before return statement.
+    if (retirement > 0) {
+        return retirement;
+        console.log(`${firstName} retires in ${retirement} years`);
+    } 
+    else {
+            return -1;
+            console.log(`${firstName} has already retired`);
+    }
+}
+
+console.log(yearsUntilRetirement(1991, 'Mike Jr.'));
+console.log(yearsUntilRetirement(1950, 'Mike Sr.'));
+```
+- coding challenge
+```js
+// funcdtion: coding challenge
 ```
   
   
