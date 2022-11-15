@@ -891,15 +891,24 @@ const nmg = {
     // we used function's expression to create the method, and here a method also can be a property
     // any function that is attached to the object is called a method
 
+    // ver-1
     // calcAge: function(birthYear) { // function value
     //     return 2037 - birthYear;
     // }
 
-    calcAge: function() { // function value
-        // nmg is calling the calcAge method and 
-        console.log(this); // and in the method 'this' point the 'nmg'
-        return 2037 - this.birthYear; // and 'this' here as a 'nmg' will give the access to the birthYear
-    }
+    //ver-2
+    // calcAge: function() { 
+    //     // nmg is calling the calcAge method and 
+    //     console.log(this); // and in the method 'this' point the 'nmg'
+    //     return 2037 - this.birthYear; // and 'this' here as a 'nmg' will give the access to the birthYear
+    // }
+
+    //ver-3
+      calcAge: function() { 
+        // create a new object with dot notation and setting it to the what we calculate
+        this.age = 2037 - this.birthYear; 
+        return this.age;
+      }
 };
 
 // call the function property value
@@ -910,8 +919,23 @@ const nmg = {
 // nmg is calling the calcAge method and 
 // and in the method 'this' point the 'nmg'
 console.log(nmg.calcAge());
-// console.log(nmg['calcAge'](1993));
+
+
+// in case that we need caclAge property throughout the program multiple times
+// bad practise would be calling it below way
+// meaning 'return 2037 - this.birthYear;' computation will be done couple of time which is big NO-NO on complex and heavier projects
+console.log(nmg.calcAge());
+console.log(nmg.calcAge());
+console.log(nmg.calcAge());
+
+// instead we could caculate the age one, store it in the object and retrieve it from the object later when needed (ver-3)
+console.log(nmg.age);
+console.log(nmg.age);
+console.log(nmg.age);
+
 ```
+
+
 
 
 
