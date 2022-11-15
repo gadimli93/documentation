@@ -700,6 +700,223 @@ console.log(newLengths);
 ```
 #### Remove elements
 
+- `pop` : a method to remove the element from the array
+  - it can return(capture) the removed element
+  
+```js
+// without passing any argument, to remove the last element
+friends.pop();
+
+// to capture the removed element
+const popped = friends.pop();
+console.log(popped);
+console.log(friends);
+
+```
+- `shift` : a method to remove the first element
+  - it can return(capture) the removed element
+```js
+// without passing any argument, to remove the first element
+const shifted = friends.shift();
+console.log(shifted);
+console.log(friends);
+```
+- `indexOf` : a method to return the index number of the element
+
+```js
+// capture/return the index of the element
+console.log(friends.indexOf('m1'));
+
+// when the element no longer exist on the array it will return -1
+console.log(friends.indexOf('m3'));
+```
+- `includes` : a method from ES6, to check whether or not(true/false) element exist in the array
+  - thid method check the element with the strict equality, meaning even data types must be the same.
+
+```js
+//ES6 includes method
+
+console.log(friends.includes('m3')); // false
+console.log(friends.includes('m2')); // true
+
+// strict equality check
+friends.push(37); // added a number
+console.log(friends.includes('37')); // false => bcuz we check it with String type
+
+console.log(friends.includes(37)); // true => bcuz we check it with number type
+
+// includes works better with if-else statements
+if(friends.includes('m1')) {
+    console.log('the element does exist')
+} else {
+    console.log('no element found')
+}
+```
+- codding challenge-2
+```js
+// coding challenge-2
+*/
+// const calcTip = bill => bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+const calcTip = function(bill) {
+
+    return bill >= 50 && bill <= 300 ? bill * 0.25 : bill * 0.2;
+}
+
+const bill = [125, 555, 44];
+console.log(bill);
+const tips = [calcTip(bill[0]), calcTip(bill[1]), calcTip(bill[2])];
+
+console.log(tips);
+
+const total = [bill[0]+ tips[0],bill[1]+ tips[1], bill[2]+ tips[2] ];
+console.log(total);
+
+```
+
+### Data Structure : OBJECTS
+- order of the elements doesn't matter when we retrieve them -> unstructured
+- there are multiple ways to create the objects but {} is the easest one and t called literal Syntax
+
+```js
+// DS: Objects
+// 1-array version => cannot define/name each element individually
+const credidentialsInfo = [
+    'MyName',
+    'MySurnam',
+    2037- 1993,
+    'devops',
+    ['friend-1', 'friend-2', 'friend-3']
+
+];
+
+// 2- object version with more detailed => can define each one of them individually
+// key-value paired, each of keys also called properties
+// e.g myCredidentials has 5 properties.
+
+const myCredidentials = {
+    firstName: 'MyName',
+    lastName: 'MySurname',
+    age: 2037- 1993,
+    job: 'devops',
+    friends: ['friend-1', 'friend-2', 'friend-3']
+};
+```
+#### Retrieveing the Property
+- using `.` dot notation
+- using `[]` brakcet notation
+
+```js
+
+// using dot(.) operator - retrieve elememnt
+console.log(myCredidentials.lastName);
+
+// operation is actually an expression and inside the brakcet we can express what we want
+console.log(myCredidentials['lastName']);
+
+// concatenate = link together
+const nameKey = 'Name';
+
+console.log(myCredidentials['first' + nameKey]);
+console.log(myCredidentials['last' + nameKey]);
+
+// in case of we dont know what information to retrieve
+// we can use prompt built-in function for that matter
+
+// this function will return a string 
+const requestedInfo = prompt('what do you want to retrieve from creditentials? Choose from: firstName, lastName, age, job, friends');
+// using dot(.) notation will return 'undefined' as myCredidentials does not have any property named 'requestedInfo'
+console.log(myCredidentials.requestedInfo);
+
+// using bracket[] notation will return the required info, sinde value inside the brakcet will be replace with actual one.
+console.log(myCredidentials[requestedInfo]);
+
+// add value using dot and bracket notations
+myCredidentials.location = 'earth';
+myCredidentials['email'] = 'email@address.com';
+
+// to overcome the 'undefined' we can create a custom string whenever user tries to access the property that doesn't exist
+if(myCredidentials[requestedInfo]) {
+    console.log(myCredidentials[requestedInfo]);
+} else {
+    console.log('Wrong request! Choose from: firstName, lastName, age, job, friends')
+}
+
+console.log(myCredidentials);
+
+// challenge
+// return "on the record there are 3 friends and friend-1 is the closest one."
+console.log(`on the record of ${myCredidentials.firstName} has ${myCredidentials.friends.length} friends and ${myCredidentials.friends[0]} is the closest one`);
+
+```
+#### Object methods
+
+```js
+
+const nmg = {
+    firstName: 'MyName', // string value
+    lastName: 'MySurname',
+    birthYear: 1993, // number value
+    job: 'devops',
+    friends: ['friend-1', 'friend-2', 'friend-3'],
+    hasDriversLicense: true, // boolean value
+
+    // add function as a property therefore instread of = we use :
+    // we used function's expression to create the method, and here a method also can be a property
+    // any function that is attached to the object is called a method
+    
+    calcAge: function(birthYear) { // function value
+        return 2037 - birthYear;
+    }
+};
+
+// regular function as a variable
+calcAge = function(birthYear) {
+    return 2037 - birthYear;
+};
+
+```
+- `this' : keyword is equal to the object which it is called
+  - this : keyword will help to avoid 'dont repeat yoursleft' and 'hardcode'ing
+
+```js
+const nmg = {
+    firstName: 'MyName', // string value
+    lastName: 'MySurname',
+    birthYear: 1993, // number value
+    job: 'devops',
+    friends: ['friend-1', 'friend-2', 'friend-3'],
+    hasDriversLicense: true, // boolean value
+
+    // add function as a property therefore instread of = we use :
+    // we used function's expression to create the method, and here a method also can be a property
+    // any function that is attached to the object is called a method
+
+    // calcAge: function(birthYear) { // function value
+    //     return 2037 - birthYear;
+    // }
+
+    calcAge: function() { // function value
+        // nmg is calling the calcAge method and 
+        console.log(this); // and in the method 'this' point the 'nmg'
+        return 2037 - this.birthYear; // and 'this' here as a 'nmg' will give the access to the birthYear
+    }
+};
+
+// call the function property value
+// this is a bad practice of access the information of property
+// instead we will use special variable 'this' keyword to access the property directly from the object instead of pass it in
+
+// whatever appears before the dot is the one that calling the method
+// nmg is calling the calcAge method and 
+// and in the method 'this' point the 'nmg'
+console.log(nmg.calcAge());
+// console.log(nmg['calcAge'](1993));
+```
+
+
+
+
+
 
 
 
