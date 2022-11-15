@@ -625,9 +625,80 @@ checkWinner(576, 111)
  
 ```
 
-  
-  
-  
+## Data Structure-1: Arrays
+- bundle : a group of things fastened together for convenient handling
+  - synonims: package, parcel, 
+- structure: 
+  - arrayName = ['element1', 'element2', 'element-nth'];
+  - arrayNAme = new Array();
+- array doesn't allow to operate with whole arrays but only its individual elements
+
+```js
+const friends = ['m1', 'm2', 'm3'];
+ console.log(friends);
+ console.log(friends[0]);
+ console.log(friends[2]);
+
+ console.log(friends.length);
+ console.log(friends[friends.length - 1]);
+
+// change or mutate the array
+// since array is not primite value, we are able to change the value of the array despite it was declared with 'const'
+friends[2] = 'j1';
+console.log(friends);
+
+// friends = ['k2', 'k3] => this is illegal change and wont be working
+
+const firstName = 'NM';
+const nmg = [firstName, 'Gadim', 2023 - 1993, 'developer', friends];
+console.log(nmg);
+console.log(nmg.length)
+
+// execise
+const caclAge = function(birthYear) {
+    return 2037 - birthYear;
+};
+
+const years = [1993, 1994, 1995, 1996];
+// console.log(caclAge(years)); // output is NaN, because trying to extract a whole number from array
+
+const age1 =  caclAge(years[0]);
+
+const age2 =  caclAge(years[1]);
+
+const age3 =  caclAge(years[years.length - 1]);
+console.log(age1,age2,age3);
+
+const ages = [caclAge(years[0]), caclAge(years[1]), caclAge(years[years.length - 1])];
+console.log(ages);
+```
+
+### Basic Array Operations(Methods)
+- methods: JS's built-in functions that can be applied directly to the arrays
+
+#### Add elements
+- `push` : is mathod which is technically a function to add elements at the end of the array
+- `.` : a dot here atachs the `push` method to array
+```js
+arrayName.push('element');
+
+const friends = ['m1', 'm2', 'm3'];
+//push method also can return the length of the array
+// to capture the length of new array
+const newLength = friends.push('j1');
+console.log(friends);
+console.log(newLength);
+```
+- `unshift` :  is method to add element at the beginning of the array
+  - same as `push` method it can also capture the length of the array
+
+```js
+const friends = ['m1', 'm2', 'm3'];
+const newLengths = friends.unshift('j3');
+console.log(friends);
+console.log(newLengths);
+```
+#### Remove elements
 
 
 
