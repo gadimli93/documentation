@@ -933,10 +933,153 @@ console.log(nmg.age);
 console.log(nmg.age);
 console.log(nmg.age);
 
+//test challenges
+
+const nmg = {
+    firstName: 'MyName', // string value
+    lastName: 'MySurname',
+    birthYear: 1993, // number value
+    job: 'devops',
+    friends: ['friend-1', 'friend-2', 'friend-3'],
+    hasDriversLicense: true, // boolean value
+
+      licenseCheck: function() {
+        return this.hasDriversLicense ? 'a' : 'no';
+      },
+      
+       //ver-3
+      calcAge: function() { 
+        // create a new object with dot notation and setting it to the what we calculate
+        this.age = 2037 - this.birthYear; 
+        return this.age;
+      }
+};
+
+// wite "MyName is a n-years old devops and he has a driver's license"
+console.log(`${nmg.firstName} is a ${nmg.age} years old ${nmg.job} and s/he has ${nmg.licenseCheck()} driver's license.`)
+
+
+```
+- arrays are also objects, that why we can also hahe methods.
+
+```js
+// Coding Challenge #3
+
+/*
+Let's go back to Mark and John comparing their BMIs! This time, let's use objects to implement the calculations! 
+Remember: BMI = mass / height ** 2 = mass / (height * height). (mass in kg and height in meter)
+
+1. For each of them, create an object with properties for their full name, mass, and height (Mark Miller and John Smith)
+2. Create a 'calcBMI' method on each object to calculate the BMI (the same method on both objects). Store the BMI value to a property, and also return it from the method.
+3. Log to the console who has the higher BMI, together with the full name and the respective BMI. Example: "John Smith's BMI (28.3) is higher than Mark Miller's (23.9)!"
+
+TEST DATA: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m tall.
+
+*/
+const mark = {
+  fullName: 'Mark Miller',
+  mass: 78,
+  height: 1.69,
+  calcBMI: function() {
+    this.bmi = this.mass / this.height ** 2;
+    return this.bmi;
+  }
+};
+
+const john = {
+  fullName: 'John Smith',
+  mass: 92,
+  height: 1.95,
+  calcBMI: function() {
+    this.bmi = this.mass / this.height ** 2;
+    return this.bmi;
+  }
+};
+
+mark.calcBMI();
+john.calcBMI();
+console.log(mark.bmi, john.bmi);
+
+if(mark.bmi > john.bmi) {
+   console.log(`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s BMI (${john.bmi})`);
+} else if (john.bmi > mark.bmi) {
+   console.log(`${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s BMI (${mark.bmi})`)
+} else {
+  console.log("there both have same BMI");
+}
+
 ```
 
+### LOOPS
+- beside `if-else statement` another control structure operation is `loops`
+- loops : allows to automake repetitive tasks
+- `for` : loop statement has 3 parts
+  - 1. initial value of counter
+  - 2. logical condition, that will run the loop while its true
+  - 3. increase the value
+  
+```js
+// LOOPS
+// for loop keeps running while condition is true
+// for (let rep = 1; rep <= 10; rep++) {
+//   console.log(`lifting weights repetition ${rep}`)
+// }
 
+// use for loop to lopp through this array
+// log 5 elemets to array
+const jonas = [
+   'John',
+   'Smith',
+   2037 - 1993,
+   'devops',
+   ['fri', 'fri2', 'fri3'],
+   true,
+   false
+];
+// create empty array
+const types = [];
 
+for(let i = 0; i < jonas.length; i++) {
+  console.log(jonas[i], typeof jonas[i]);
+
+  // add types of array elements to the empty array
+  // ver-1
+  // types[i] = typeof jonas[i]; 
+  // ver-2
+  types.push(typeof jonas[i]);
+}
+//check the array
+console.log(types);
+
+// loop through years 
+const years = [1993, 1994, 1995, 1996, 1997];
+// and fill up the ages to the array
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  ages.push( 2037 - years[i]);
+}
+console.log(ages);
+```
+- continue : state of for loop ->> exit the current iteration of the loop
+```js
+/ continue and break
+for(let i = 0; i < jonas.length; i++) {
+  // log only the 'string' types into the array, everything else will be skipped
+  if (typeof jonas[i] !== 'string') // if the type of the jonas element is not string continue
+  continue;
+  console.log(jonas[i], typeof jonas[i]);
+}
+```
+- break : state of for loop ->> terminate the whole loop
+```js
+for(let i = 0; i < jonas.length; i++) {
+ // log no other elements once number is found
+  if (typeof jonas[i] === 'number') // fill every element in to the array until the number type comes up
+  break;
+  console.log(jonas[i], typeof jonas[i]);
+}
+```
 
 
 
