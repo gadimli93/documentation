@@ -1081,8 +1081,45 @@ for(let i = 0; i < jonas.length; i++) {
 }
 ```
 
+### Looping backward and Looping in loops
 
+- Backward:
 
+```js
+const jonas = [
+  'John',
+  'Smith',
+  2037 - 1993,
+  'devops',
+  ['fri', 'fri2', 'fri3'],
+  true
+];
+// looping backwards
+
+for(let i = jonas.length - 1; i >= 0; i--) {
+  console.log(i, jonas[i])
+}
+
+```
+- Looping inside the loop:
+
+```js
+// looping inside the loop
+for(let exercise = 1; exercise < 4; exercise++) {
+  console.log(`---------Starting execise ${exercise}🕰️`);
+
+  for(let rep = 1; rep < 6; rep++) {
+    console.log(`Lifting weight repetition ${rep}`);
+  }
+
+}
+// output
+
+![Screenshot 2022-11-27 at 6 32 52 PM](https://user-images.githubusercontent.com/11403950/204128370-2e010ef4-4df4-4158-9393-8f0b30e3b73f.png)
+
+```
+
+### While Loops
 
 
 
